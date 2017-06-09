@@ -1,1 +1,42 @@
 /* Your glorious CSS here */
+body {
+    
+}
+.notesList {
+}
+
+.eachNote {
+  border-style: groove;
+  float: left;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.mainNote {
+  margin-top:40px;
+  border-style: groove;
+  padding: 10px;
+}
+
+.editButton {
+
+}
+
+.newButton {
+  float:right;
+}
+
+.form-group {
+  margin-top:30px;
+}
+
+
+.btn-success {
+  margin-top:-30px;
+}
+
+.deleteButton {
+  float:right;
+}
+
+
