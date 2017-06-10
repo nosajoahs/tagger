@@ -1,5 +1,5 @@
-<div class ="eachNote">
+<div class ="eachNote" ng-controller="eachNoteCtrl">
   <h5>{{ctrl.title}}</h5>
-  <button type="button" class="btn btn-info">Edit</button>
+  <button type="button" class="btn btn-info" ng-click="ctrl.select(ctrl.note)">Edit</button>
   <p>{{ctrl.text}}</p>
 </div>

@@ -1,11 +1,11 @@
 // Define the `noteApp` module
 angular.module('noteApp', [])
-.controller('NoteCtrl', function NoteController($scope, $http) {
+.controller('NoteCtrl', function noteControl($scope, $http) {
   $scope.saveNote = function() {
     var note = {
       title : $scope.title,
       text:  $scope.text
-    }
+    };
 
     $http({
       method : 'POST',
@@ -13,9 +13,10 @@ angular.module('noteApp', [])
       data : note
     }).then(function mySuccess(result) {
       console.log('res data' , result.data)
-    })
-  $scope.title = "";
-  $scope.text = "";
+    });
+
+    $scope.title = "";
+    $scope.text = "";
   }
 })
 .directive('app', function() {
@@ -23,7 +24,7 @@ angular.module('noteApp', [])
     controller: 'appCtrl',
     controllerAs: 'ctrl',
     bindToController: true,
-    templateUrl: 'src/templates/app.html'
+    templateUrl: 'public/angular/templates/app.html'
   };
 });
 
