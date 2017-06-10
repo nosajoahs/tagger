@@ -1,44 +1,54 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-
-
-// bring in any express middleware functions and other libraries you need
-
-// this will force the db/index.js module to run, establishing a database connection.
-// you may or may not need to use the database connection in this index.js file.
-// if you need to use it, assign the return value of require('./db') to a variable.
 var db = require('./db');
-
-// create an express instance 
 var app = express();
-//var router = express.Router();
 
-// hook any middleware you need to into the express instance, including your route handlers
-// hint: use the bodyParser middleware to parse the request body for POST & PUT requests.
 app.use(express.static('public'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-// serve the `../public/` folder using the express.static() middleware function
-// (you will want to use the path library to correctly resolve the path to ../public.)
+//use below line for postman
+//app.use(bodyParser.urlencoded({extended: false}));
 
-// listen on this port:
 const port = 5050;
 console.log("listening on port 5050")
 
-app.get('/', function(req, res){
-  console.log('hey we got here')
+app.get('/', (req, res) => {
+  console.log('homepage server get')
 });
 
-app.post('/', function(req, res){
-  console.log(req.body)
-  //console.log(req.body.title)
+app.post('/saveNote', (req, res) => {
+  console.log('server post saveNote ' , req.body)
+  db.Notes.create({
+    title: req.body.title,
+    text: req.body.text
+  })
+  .then(notes => res.send(notes))
+  .catch(error => res.send(error))
+})
+
+app.get('/getNotes', (req, res) => {
+  db.Notes.findAll()
+  .then(notes => res.send(notes))
+  .catch(error => res.send(error))
 });
 
-app.get('/hello', function(req, res){
-  console.log('hey we got here')
+app.delete('/deleteNote', (req, res) => {
+  db.Notes.destroy({
+    where: {
+      id : req.body.id
+    }
+  })
+  .then(notes => res.send(201, notes))
+  .catch(error => res.send(error))
 });
 
+app.post('/updateNote', (req, res) => {
+  db.Notes.update(
+  {title: req.body.title, text: req.body.text},
+  {where: {id: req.body.id}})
+  .then(notes => res.send(notes))
+  .catch(error => res.send(error))
+});
 
 app.listen(port);
 

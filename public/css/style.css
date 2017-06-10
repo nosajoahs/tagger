@@ -1,9 +1,4 @@
 /* Your glorious CSS here */
-body {
-    
-}
-.notesList {
-}
 
 .eachNote {
   border-style: groove;
@@ -16,10 +11,6 @@ body {
   margin-top:40px;
   border-style: groove;
   padding: 10px;
-}
-
-.editButton {
-
 }
 
 .newButton {
@@ -39,4 +30,11 @@ body {
   float:right;
 }
 
+.noteTitle {
+  display: inline-block;
+}
+
+.btn-info {
+  float:right;
+}
 

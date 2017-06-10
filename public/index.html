@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="noteApp">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,52 +8,53 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
 <script src="angular/app.js"></script>
+<script src="angular/components/noteList.js"></script>
+<script src="angular/components/noteListEntry.js"></script>
   <title>Tagger</title>
 </head>
 
-<body>
+<body ng-app="noteApp">
   <div class="container">
-
     <h1>TAGGER</h1>
-
     <div class="row">
-
       <div class="col-md-4">
+        
+
         <div class="notesList">
           <h4>Notes:</h4>
-          <div class ="eachNote">
-            <h5>Loren ipsum</h5>
+          <!--<div class ="eachNote">
+            <h5 class = "noteTitle">Loren ipsum</h5> 
             <button type="button" class="btn btn-info">Edit</button>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
 
           <div class ="eachNote">
-            <h5>Loren ipsum</h5>
+            <h5 class = "noteTitle">Loren ipsum</h5>
             <button type="button" class="btn btn-info">Edit</button>
             <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
+          </div>-->
+          <!--<notes-list></notes-list>-->
         </div>
       </div>
 
       <div class="col-md-8">
         <div class="mainNote">
-          <form ng-controller ="NoteController">
+          <form ng-controller ="NoteCtrl">
               <h3>Editing:</h3>
               <button type="button" class="btn btn-success newButton">Create New Note</button>
                 <div class="form-group">
-                  <input type="textbox" class="form-control" id="title" placeholder="TITLE..">
+                  <input type="textbox" class="form-control" id="title" placeholder="TITLE.." ng-model="title">
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" rows="9" id="textMessage" placeholder="TEXT MESSAGE.."></textarea>
+                  <textarea class="form-control" rows="9" id="textMessage" placeholder="TEXT MESSAGE.." ng-model="text"></textarea>
                 </div>
                 <button type="submit" ng-click="saveNote()" class="btn btn-primary">SAVE</button>
-                <button type="submit" class="btn btn-danger deleteButton">DELETE</button>
+                <button type="submit" class="btn btn-danger deleteButton" ng-click="deleteNote()">DELETE</button>
           </form>
         </div>
       </div>
 
     </div>
   </div>
-  <!--<phone-list></phone-list>-->
 </body>
 </html>
