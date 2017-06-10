@@ -13,43 +13,39 @@
   <title>Tagger</title>
 </head>
 
-<body ng-app="noteApp">
+<body ng-app="noteApp" ng-controller="NoteCtrl">
   <div class="container">
     <h1>TAGGER</h1>
     <div class="row">
       <div class="col-md-4">
-        
-
         <div class="notesList">
           <h4>Notes:</h4>
-          <!--<div class ="eachNote">
-            <h5 class = "noteTitle">Loren ipsum</h5> 
-            <button type="button" class="btn btn-info">Edit</button>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div>
+            <div class="eachNote" ng-repeat="note in notes">
+              <h5>{{note.title}}</h5>
+              <button type="button" class="btn btn-info" ng-click="editNote(note)">Edit</button>
+              <p>{{note.text}}</p>
+            </div>
           </div>
-
-          <div class ="eachNote">
-            <h5 class = "noteTitle">Loren ipsum</h5>
-            <button type="button" class="btn btn-info">Edit</button>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>-->
-          <!--<notes-list></notes-list>-->
+          <!--</div>-->
         </div>
       </div>
 
       <div class="col-md-8">
         <div class="mainNote">
-          <form ng-controller ="NoteCtrl">
+          <form>
               <h3>Editing:</h3>
-              <button type="button" class="btn btn-success newButton">Create New Note</button>
+              <button type="button" class="btn btn-success newButton" ng-disabled="true">Create New Note</button>
                 <div class="form-group">
                   <input type="textbox" class="form-control" id="title" placeholder="TITLE.." ng-model="title">
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" rows="9" id="textMessage" placeholder="TEXT MESSAGE.." ng-model="text"></textarea>
+                  <textarea class="form-control" rows="14" id="textMessage" placeholder="TEXT MESSAGE.." ng-model="text"></textarea>
                 </div>
-                <button type="submit" ng-click="saveNote()" class="btn btn-primary">SAVE</button>
-                <button type="submit" class="btn btn-danger deleteButton" ng-click="deleteNote()">DELETE</button>
+                
+                <button type="submit" class="btn btn-primary" ng-click="saveNote()">CREATE NOTE</button>
+
+                <button type="submit" class="btn btn-danger deleteButton" ng-click="deleteNote()" ng-disabled="true">DELETE</button>
           </form>
         </div>
       </div>

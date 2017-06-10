@@ -12,9 +12,9 @@ app.use(bodyParser.json());
 const port = 5050;
 console.log("listening on port 5050")
 
-app.get('/', (req, res) => {
-  console.log('homepage server get')
-});
+// app.get('/', (req, res) => {
+//   console.log('homepage server get')
+// });
 
 app.post('/saveNote', (req, res) => {
   console.log('server post saveNote ' , req.body)
@@ -27,7 +27,10 @@ app.post('/saveNote', (req, res) => {
 })
 
 app.get('/getNotes', (req, res) => {
-  db.Notes.findAll()
+  db.Notes.findAll({ 
+    limit: 5, 
+    order: [['updatedAt', 'DESC']]
+  })
   .then(notes => res.send(notes))
   .catch(error => res.send(error))
 });

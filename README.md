@@ -10,8 +10,8 @@ Then, you'll need to discover the tools and consult it's documentation to implem
 
 You may not get to everything, but that's okay. Please create a note-taking app that adheres to this user story, and work on these top-down.
 
-- [ ] As a user, I should be able to create a note.
-- [ ] As a user, I should be able to view a list of notes that I have created.
+- [x] As a user, I should be able to create a note.
+- [x] As a user, I should be able to view a list of notes that I have created.
 - [ ] As a user, I should be able to edit an existing note.
 - [ ] As a user, I should be able to delete a note.
 

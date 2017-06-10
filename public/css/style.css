@@ -5,6 +5,8 @@
   float: left;
   padding: 10px;
   margin-bottom: 10px;
+  width: 100%;
+  /*height: 150px;*/
 }
 
 .mainNote {
@@ -15,6 +17,7 @@
 
 .newButton {
   float:right;
+
 }
 
 .form-group {
@@ -23,7 +26,7 @@
 
 
 .btn-success {
-  margin-top:-30px;
+  margin-top: -57px;
 }
 
 .deleteButton {
@@ -36,5 +39,6 @@
 
 .btn-info {
   float:right;
+  margin-top: -37px;
 }
 
