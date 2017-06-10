@@ -8,12 +8,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
 <script src="angular/app.js"></script>
-<script src="angular/components/noteList.js"></script>
-<script src="angular/components/noteListEntry.js"></script>
   <title>Tagger</title>
 </head>
 
-<body ng-app="noteApp" ng-controller="NoteCtrl">
+<body ng-app="noteApp" ng-controller="NoteCtrl" ng-init="getNotes()">
   <div class="container">
     <h1>TAGGER</h1>
     <div class="row">
@@ -34,8 +32,8 @@
       <div class="col-md-8">
         <div class="mainNote">
           <form>
-              <h3>Editing:</h3>
-              <button type="button" class="btn btn-success newButton" ng-disabled="true">Create New Note</button>
+              <h3>{{toggleCreate}}</h3>
+              <button type="button" class="btn btn-success newButton" ng-click="newNote()" ng-disabled="toggleNewNote">Create New Note</button>
                 <div class="form-group">
                   <input type="textbox" class="form-control" id="title" placeholder="TITLE.." ng-model="title">
                 </div>
@@ -43,9 +41,11 @@
                   <textarea class="form-control" rows="14" id="textMessage" placeholder="TEXT MESSAGE.." ng-model="text"></textarea>
                 </div>
                 
-                <button type="submit" class="btn btn-primary" ng-click="saveNote()">CREATE NOTE</button>
+                <button type="submit" class="btn btn-primary" ng-show="toggleCreateSaveNote" ng-click="createNote()">CREATE NOTE</button>
 
-                <button type="submit" class="btn btn-danger deleteButton" ng-click="deleteNote()" ng-disabled="true">DELETE</button>
+                <button type="submit" class="btn btn-primary" ng-show="!toggleCreateSaveNote" ng-click="updateNote()">SAVE NOTE</button>
+
+                <button type="submit" class="btn btn-danger deleteButton" ng-click="deleteNote()" ng-disabled="false">DELETE</button>
           </form>
         </div>
       </div>

@@ -12,13 +12,13 @@ You may not get to everything, but that's okay. Please create a note-taking app 
 
 - [x] As a user, I should be able to create a note.
 - [x] As a user, I should be able to view a list of notes that I have created.
-- [ ] As a user, I should be able to edit an existing note.
-- [ ] As a user, I should be able to delete a note.
+- [x] As a user, I should be able to edit an existing note.
+- [x] As a user, I should be able to delete a note.
 
 Technical Considerations:
 
-- [ ] Implement a RESTful API for your client-side code to make calls to.
-- [ ] Implement a Single Page Application on the client-side with React or Angular.
+- [x] Implement a RESTful API for your client-side code to make calls to.
+- [x] Implement a Single Page Application on the client-side with React or Angular.
 
 You'll notice when you get to the front-end portion of the code that this app, while seemingly simple, is relatively complex to get the UI to behave and flow correctly. You should prioritize the functionality of a user story task, but then implement error handling and some basic styling for each step once the functionality is in place.
 

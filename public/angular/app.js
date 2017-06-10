@@ -2,37 +2,48 @@
 var app = angular.module('noteApp', [])
 .controller('NoteCtrl', function noteControl($scope, $http) {
   
-  $http({
-      method : 'GET',
-      url : '/getNotes'
-    })
-    .then(function mySuccess(results) {
-      $scope.notes = results.data;
-      console.log($scope.notes)
-    });
+  $scope.toggleCreate = "CREATING:";
+  $scope.toggleCreateSaveNote = true;
+  $scope.toggleNewNote = true;
 
-  $scope.saveNote = function(note) {
-    console.log(note)
+  $scope.newNote = function() {
+    $scope.title = "";
+    $scope.text = "";
+    $scope.toggleNewNote = true;
+  }
+
+  $scope.createNote = function() {
     var note = {
       title : $scope.title,
       text:  $scope.text
     };
     $http({
       method : 'POST',
-      url : '/saveNote',
+      url : '/createNote',
       data : note
     }).then(function mySuccess(result) {
-      console.log('res data' , result.data)
       $scope.notes.unshift(result.data)
     });
-    $scope.title = "";
-    $scope.text = "";
+    $scope.newNote();
+  }
+
+  $scope.getNotes = function() {
+    $http({
+      method : 'GET',
+      url : '/getNotes'
+    })
+    .then(function mySuccess(results) {
+      $scope.notes = results.data;
+    })
   }
 
   $scope.editNote = function(note) {
-    console.log(note)
     $scope.title = note.title;
     $scope.text = note.text;
+    $scope.id = note.id;
+    $scope.toggleCreate = "EDITING:";
+    $scope.toggleCreateSaveNote = false;
+    $scope.toggleNewNote = false;
   }
 
   $scope.updateNote = function(note) {
@@ -46,8 +57,7 @@ var app = angular.module('noteApp', [])
       url : '/updateNote',
       data : note
     }).then(function mySuccess(result) {
-      console.log('res data' , result)
-      //$scope.notes.unshift(result.data)
+      $scope.getNotes();
     });
   }
 
@@ -58,26 +68,14 @@ var app = angular.module('noteApp', [])
       id: $scope.id
     };
     $http({
-      method : 'DELETE',
+      method : 'POST',
       url : '/deleteNote',
       data : note
     }).then(function mySuccess(result) {
-      console.log('res data' , result.data)
+      $scope.getNotes();
     });
-    $scope.title = "";
-    $scope.text = "";
+    $scope.newNote();
   }
+});
 
-
-
-})
-
-// .directive('app', function() {
-//   return {
-//     controller: 'appCtrl',
-//     controllerAs: 'ctrl',
-//     bindToController: true,
-//     templateUrl: 'public/angular/templates/app.html'
-//   };
-// });
 

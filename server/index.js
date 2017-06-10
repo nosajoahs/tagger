@@ -16,8 +16,7 @@ console.log("listening on port 5050")
 //   console.log('homepage server get')
 // });
 
-app.post('/saveNote', (req, res) => {
-  console.log('server post saveNote ' , req.body)
+app.post('/createNote', (req, res) => {
   db.Notes.create({
     title: req.body.title,
     text: req.body.text
@@ -35,7 +34,7 @@ app.get('/getNotes', (req, res) => {
   .catch(error => res.send(error))
 });
 
-app.delete('/deleteNote', (req, res) => {
+app.post('/deleteNote', (req, res) => {
   db.Notes.destroy({
     where: {
       id : req.body.id
