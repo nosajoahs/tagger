@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 //use below line for postman
 //app.use(bodyParser.urlencoded({extended: false}));
 
-const port = 5050;
+const port = 5050 || process.env.PORT;
 console.log("listening on port 5050")
 
 // app.get('/', (req, res) => {
