@@ -1,4 +1,7 @@
 /* Your glorious CSS here */
+body {
+  background-image: url(https://s-media-cache-ak0.pinimg.com/736x/b2/d3/a3/b2d3a3164a14ca00958731907e5daf0b.jpg)
+}
 
 .eachNote {
   border-style: groove;
